@@ -5,5 +5,6 @@ import Finder from '@/app/windows/Finder'
 import Text from '@/app/windows/Text'
 import ImageFile from '@/app/windows/ImageFile'
 import Contact from '@/app/windows/Contact'
+import Photos from '@/app/windows/Photos'
 
-export { Terminal, Safari, Resume, Finder, Text, ImageFile, Contact }
+export { Terminal, Safari, Resume, Finder, Text, ImageFile, Contact, Photos }

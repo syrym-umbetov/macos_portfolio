@@ -1,5 +1,5 @@
 'use client'
-import { Navbar, Welcome, Dock } from '@/app/components'
+import { Navbar, Welcome, Dock, Desktop } from '@/app/components'
 import gsap from 'gsap'
 import { Draggable } from 'gsap/dist/Draggable'
 import {
@@ -10,6 +10,7 @@ import {
   Text,
   ImageFile,
   Contact,
+  Photos,
 } from '@/app/windows'
 
 gsap.registerPlugin(Draggable)
@@ -26,6 +27,8 @@ export default function Home() {
       <Text />
       <ImageFile />
       <Contact />
+      <Photos />
+      <Desktop />
     </main>
   )
 }
