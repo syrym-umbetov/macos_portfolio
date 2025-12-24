@@ -12,10 +12,21 @@ type WindowKey =
   | 'txtfile'
   | 'imgfile'
 
+interface FileData {
+  name?: string
+  image?: string
+  subtitle?: string
+  description?: string[]
+  imageUrl?: string
+  href?: string
+  fileType?: string
+  [key: string]: any
+}
+
 interface WindowState {
   isOpen: boolean
   zIndex: number
-  data: any
+  data: FileData | null
 }
 
 interface WindowStore {
@@ -33,6 +44,7 @@ const useWindowStore = create<WindowStore>()(
     openWindow: (windowKey: WindowKey, data: any = null) =>
       set((state) => {
         const win = state.windows[windowKey]
+        if (!win) return
         win.isOpen = true
         win.zIndex = state.nextZIndex
         win.data = data ?? win.data
@@ -41,16 +53,18 @@ const useWindowStore = create<WindowStore>()(
     closeWindow: (windowKey: WindowKey) =>
       set((state) => {
         const win = state.windows[windowKey]
+        if (!win) return
         win.isOpen = false
         win.data = null
       }),
     focusWindow: (windowKey: WindowKey) =>
       set((state) => {
         const win = state.windows[windowKey]
+        if (!win) return
         win.zIndex = state.nextZIndex++
       }),
   }))
 )
 
 export default useWindowStore
-export type { WindowKey, WindowState, WindowStore }
+export type { WindowKey, WindowState, WindowStore, FileData }
